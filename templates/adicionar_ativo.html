@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Adicionar Ativo</h1>
+<form method="POST" action="{{ url_for('adicionar_ativo') }}">
+    <div class="input-field">
+        <input type="text" id="nome" name="nome" class="validate" required>
+        <label for="nome">Nome do Ativo</label>
+    </div>
+    <div class="input-field">
+        <select id="empresa_id" name="empresa_id" required>
+            <option value="" disabled selected>Selecione a Empresa</option>
+            {% for empresa in empresas %}
+            <option value="{{ empresa.id }}">{{ empresa.nome }}</option>
+            {% endfor %}
+        </select>
+        <label>Empresa</label>
+    </div>
+    <button type="submit" class="btn waves-effect waves-light">Salvar</button>
+</form>
+{% endblock %}

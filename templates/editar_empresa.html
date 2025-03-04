@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Editar Empresa</h1>
+<form method="POST" action="{{ url_for('editar_empresa', id=empresa.id) }}">
+    <div class="input-field">
+        <input type="text" id="nome" name="nome" class="validate" value="{{ empresa.nome }}" required>
+        <label for="nome">Nome da Empresa</label>
+    </div>
+    <button type="submit" class="btn waves-effect waves-light">Salvar</button>
+</form>
+{% endblock %}

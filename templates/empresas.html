@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Lista de Empresas</h1>
+<a href="{{ url_for('adicionar_empresa') }}" class="btn waves-effect waves-light">Adicionar Empresa</a>
+<table class="highlight">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for empresa in empresas %}
+        <tr>
+            <td>{{ empresa.id }}</td>
+            <td>{{ empresa.nome }}</td>
+            <td>
+                <a href="{{ url_for('editar_empresa', id=empresa.id) }}" class="btn-small blue">Editar</a>
+                <a href="{{ url_for('excluir_empresa', id=empresa.id) }}" class="btn-small red">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

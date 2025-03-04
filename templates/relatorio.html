@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Relatório de Ativos por Empresa</h1>
+<table class="highlight">
+    <thead>
+        <tr>
+            <th>Empresa</th>
+            <th>Total de Ativos</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in relatorio %}
+        <tr>
+            <td>{{ item.empresa }}</td>
+            <td>{{ item.total_ativos }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Ativos</title>
+    <!-- Materialize CSS via CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Barra de navegação -->
+    <nav>
+        <div class="nav-wrapper blue darken-3">
+            <a href="{{ url_for('listar_ativos') }}" class="brand-logo">Gestão de Ativos</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="{{ url_for('listar_ativos') }}">Ativos</a></li>
+                <li><a href="{{ url_for('listar_empresas') }}">Empresas</a></li>
+                <li><a href="{{ url_for('gerar_relatorio') }}">Relatório</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="card-panel {{ 'green' if category == 'success' else 'red' }} lighten-2">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="page-footer blue darken-3">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Gestão de Ativos</h5>
+                    <p class="grey-text text-lighten-4">Sistema simples para gerenciar ativos e empresas.</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2023 Gestão de Ativos
+            </div>
+        </div>
+    </footer>
+
+    <!-- Materialize JS via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Editar Ativo</h1>
+<form method="POST" action="{{ url_for('editar_ativo', id=ativo.id) }}">
+    <div class="input-field">
+        <input type="text" id="nome" name="nome" class="validate" value="{{ ativo.nome }}" required>
+        <label for="nome">Nome do Ativo</label>
+    </div>
+    <div class="input-field">
+        <select id="empresa_id" name="empresa_id" required>
+            {% for empresa in empresas %}
+            <option value="{{ empresa.id }}" {% if empresa.id == ativo.empresa_id %}selected{% endif %}>{{ empresa.nome }}</option>
+            {% endfor %}
+        </select>
+        <label>Empresa</label>
+    </div>
+    <button type="submit" class="btn waves-effect waves-light">Salvar</button>
+</form>
+{% endblock %}

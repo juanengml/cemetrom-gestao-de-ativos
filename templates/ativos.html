@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Lista de Ativos</h1>
+<a href="{{ url_for('adicionar_ativo') }}" class="btn waves-effect waves-light">Adicionar Ativo</a>
+<table class="highlight">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Empresa</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ativo in ativos %}
+        <tr>
+            <td>{{ ativo.id }}</td>
+            <td>{{ ativo.nome }}</td>
+            <td>{{ ativo.empresa_id }}</td>
+            <td>
+                <a href="{{ url_for('editar_ativo', id=ativo.id) }}" class="btn-small blue">Editar</a>
+                <a href="{{ url_for('excluir_ativo', id=ativo.id) }}" class="btn-small red">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
